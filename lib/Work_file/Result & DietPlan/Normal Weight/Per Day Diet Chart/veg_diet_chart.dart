@@ -41,32 +41,24 @@ class VegDietChartState extends State<VegDietChart> {
           ),
         ),
       ),
-      body: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          const SizedBox(height: 16),
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 16.0),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Text(
-                  '$todayDay, $todayDate',
-                  style: const TextStyle(
-                    fontWeight: FontWeight.bold,
-                    fontSize: 24,
-                    color: Color.fromARGB(255, 22, 32, 92),
-                  ),
+      body: SingleChildScrollView(
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Center(
+              child: Text(
+                '$todayDay, $todayDate',
+                style: const TextStyle(
+                  fontWeight: FontWeight.bold,
+                  fontSize: 24,
+                  color: Color.fromARGB(255, 22, 32, 92),
                 ),
-              ],
+              ),
             ),
-          ),
-          const SizedBox(height: 16),
-          SizedBox(
-            height: 700,
-            child: Column(
+            const SizedBox(height: 16),
+            Row(
               children: [
-                Expanded(
+                Flexible(
                   child: Container(
                     margin: const EdgeInsets.all(8),
                     decoration: BoxDecoration(
@@ -96,7 +88,7 @@ class VegDietChartState extends State<VegDietChart> {
                     ),
                   ),
                 ),
-                Expanded(
+                Flexible(
                   child: Container(
                     margin: const EdgeInsets.all(8),
                     decoration: BoxDecoration(
@@ -129,7 +121,7 @@ class VegDietChartState extends State<VegDietChart> {
                     ),
                   ),
                 ),
-                Expanded(
+                Flexible(
                   child: Container(
                     margin: const EdgeInsets.all(8),
                     decoration: BoxDecoration(
@@ -164,8 +156,8 @@ class VegDietChartState extends State<VegDietChart> {
                 ),
               ],
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }

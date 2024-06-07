@@ -1,11 +1,12 @@
+import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:fitness/Work_file/Result%20&%20DietPlan/Normal%20Weight/nonveg_diet_chart.dart';
 import 'package:fitness/Work_file/Result%20&%20DietPlan/Normal%20Weight/Per%20Day%20Diet%20Chart/veg_diet_chart.dart';
 import 'package:fitness/Work_file/Result%20&%20DietPlan/Normal%20Weight/exercise_chart.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 
 class NormalWeightPage extends StatelessWidget {
   const NormalWeightPage({super.key});
+
   void _showDietTypeDialog(BuildContext context) {
     showDialog(
       context: context,
@@ -61,30 +62,21 @@ class NormalWeightPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: const Text('Normal Weight Page')),
-      body: SingleChildScrollView(
-        child: Column(
+      body: SizedBox.expand(
+        child: PageView(
+          scrollDirection: Axis.vertical,
           children: [
-            const SizedBox(
-              height: 40,
-            ),
-            GestureDetector(
-              onTap: () {
-                _showDietTypeDialog(context);
-              },
-              child: SvgPicture.asset(
-                'assets/menu/diet_plan.svg',
-              ),
-            ),
-            const Text(
+            _buildPage(
+              context,
+              'assets/menu/diet_plan.svg',
               'Diet Plan',
-              style: TextStyle(
-                fontSize: 40,
-                fontWeight: FontWeight.bold,
-                color: Color.fromARGB(255, 22, 31, 83),
-              ),
+              () => _showDietTypeDialog(context),
             ),
-            GestureDetector(
-              onTap: () {
+            _buildPage(
+              context,
+              'assets/menu/healthy_habit.svg',
+              'My WorkOut',
+              () {
                 Navigator.push(
                   context,
                   MaterialPageRoute(
@@ -92,48 +84,47 @@ class NormalWeightPage extends StatelessWidget {
                   ),
                 );
               },
-              child: SvgPicture.asset(
-                'assets/menu/healthy_habit.svg',
-              ),
             ),
-            const Text(
-              'My WorkOut',
-              style: TextStyle(
-                fontSize: 40,
-                fontWeight: FontWeight.bold,
-                color: Color.fromARGB(255, 22, 31, 83),
-              ),
-            ),
-            GestureDetector(
-              onTap: () {
+            _buildPage(
+              context,
+              'assets/menu/personal_trainer.svg',
+              'Personal Trainer',
+              () {
+                // Uncomment the following lines to navigate to the Personal Trainer page
                 // Navigator.push(
                 //   context,
                 //   MaterialPageRoute(
-                //     builder: (context) =>
-                //         PersonalTrainer(),
+                //     builder: (context) => PersonalTrainer(),
                 //   ),
                 // );
               },
-              child: SvgPicture.asset(
-                'assets/menu/personal_trainer.svg',
-              ),
             ),
-            const Text(
-              'Personal Trainer',
-              style: TextStyle(
+          ],
+        ),
+      ),
+    );
+  }
+
+  Widget _buildPage(BuildContext context, String assetPath, String title,
+      VoidCallback onTap) {
+    return SingleChildScrollView(
+      child: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: <Widget>[
+            GestureDetector(
+              onTap: onTap,
+              child: SvgPicture.asset(assetPath),
+            ),
+            const SizedBox(height: 20),
+            Text(
+              title,
+              style: const TextStyle(
                 fontSize: 40,
                 fontWeight: FontWeight.bold,
                 color: Color.fromARGB(255, 22, 31, 83),
               ),
             ),
-            // GestureDetector(
-            //   onTap: () {
-            //     // Define your action here
-            //   },
-            //   child: Image.asset(
-            //     'assets/menu/personal_trainer.svg',
-            //   ),
-            // ),
           ],
         ),
       ),

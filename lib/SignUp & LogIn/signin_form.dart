@@ -1,4 +1,5 @@
-import 'package:fitness/Work_file/bmi_page.dart';
+// signup_page.dart
+import 'package:fitness/SignUp%20&%20LogIn/login_form.dart';
 import 'package:flutter/material.dart';
 
 class SignupPage extends StatefulWidget {
@@ -211,7 +212,7 @@ class SignupPageState extends State<SignupPage> {
                           Navigator.push(
                             context,
                             MaterialPageRoute(
-                              builder: (context) => const BmiPage(),
+                              builder: (context) => const LoginPage(),
                             ),
                           );
                         }
@@ -256,21 +257,6 @@ class SignupPageState extends State<SignupPage> {
                   ],
                 ),
               ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: <Widget>[
-                  const Text("Already have an account?"),
-                  TextButton(
-                    onPressed: () {
-                      Navigator.pop(context);
-                    },
-                    child: const Text(
-                      "Login",
-                      style: TextStyle(color: Color.fromARGB(255, 24, 33, 83)),
-                    ),
-                  )
-                ],
-              )
             ],
           ),
         ),
@@ -278,4 +264,3 @@ class SignupPageState extends State<SignupPage> {
     );
   }
 }
-// A RenderFlex overflowed by 201 pixels on the bottom.

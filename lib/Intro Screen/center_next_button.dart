@@ -1,5 +1,5 @@
 import 'package:animations/animations.dart';
-import 'package:fitness/SignUp%20&%20LogIn/signup_page.dart';
+import 'package:fitness/SignUp%20&%20LogIn/login_form.dart';
 import 'package:flutter/material.dart';
 
 class CenterNextButton extends StatelessWidget {
@@ -107,7 +107,7 @@ class CenterNextButton extends StatelessWidget {
                               Navigator.push(
                                 context,
                                 MaterialPageRoute(
-                                  builder: (context) => const SignupPage(),
+                                  builder: (context) => const LoginPage(),
                                 ),
                               );
                             },
